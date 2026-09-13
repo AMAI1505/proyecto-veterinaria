@@ -1,5 +1,7 @@
 package com.veterinaria.veterinariaAnimalVet.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -28,8 +30,7 @@ public class Cliente {
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mascota> mascotas;
-
-    // Relación OneToMany: Un cliente puede tener muchas citas (a través de sus mascotas)
+    
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cita> citas;
     
