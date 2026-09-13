@@ -136,13 +136,13 @@
                                 <div class="mb-3">
                                     <label for="dniEdit" class="form-label">DNI</label>
                                     <input type="text" th:field="*{dni}" class="form-control" id="dniEdit" required pattern="[0-9]{8}" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                                    <div class="invalid-feedback">El DNI es obligatorio y debe tener 8 dígitos.</div>
+                                    <div class="invalid-feedback">El DNI debe tener 8 dígitos.</div>
                                     <div class="text-danger small" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="nombreEdit" class="form-label">Nombre Completo</label>
                                     <input type="text" th:field="*{nombre}" class="form-control" id="nombreEdit" required minlength="3" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,}$" oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '')">
-                                    <div class="invalid-feedback">El nombre completo es obligatorio, debe tener al menos 3 caracteres.</div>
+                                    <div class="invalid-feedback">El nombre completo debe tener al menos 3 caracteres.</div>
                                     <div class="text-danger small" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
                                 </div>
                             </div>
