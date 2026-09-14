@@ -3,10 +3,12 @@ package com.veterinaria.veterinariaAnimalVet.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -24,6 +26,11 @@ public class Usuario implements UserDetails {
     @Column(nullable = false, length = 255)
     private String password;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "rol_id", nullable = false)
+    @NotNull(message = "El rol es obligatorio")
+    private Rol rol;
+
     @Column(nullable = false)
     private boolean enabled = true;
 
@@ -34,6 +41,11 @@ public class Usuario implements UserDetails {
     private LocalDateTime fechaDesbloqueo;
 
     public Usuario() {
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + rol.getNombre()));
     }
 
     @Override
@@ -85,6 +97,14 @@ public class Usuario implements UserDetails {
         this.password = password;
     }
 
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
@@ -104,9 +124,4 @@ public class Usuario implements UserDetails {
     public void setFechaDesbloqueo(LocalDateTime fechaDesbloqueo) {
         this.fechaDesbloqueo = fechaDesbloqueo;
     }
-
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
-	}
 }
