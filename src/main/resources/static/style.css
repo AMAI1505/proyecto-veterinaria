@@ -47,6 +47,14 @@ tbody tr {
     object-fit: cover;
 }
 
+.badge-status {
+    font-size: 0.85rem;
+    padding: 0.4em 0.7em;
+}
+.navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
 
 .navbar-responsive {
     background-color: #f8f9fa;
