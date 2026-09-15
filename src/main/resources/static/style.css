@@ -1,5 +1,5 @@
 body {
-    background-color: #f0f0f0;
+    background-color:rgb(225, 206, 225);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@ body {
 }
 
 footer {
-    background-color: #0c0c0c;
+    background-color:blue;
     padding: 10px;
     color: #ffffff;
 }
