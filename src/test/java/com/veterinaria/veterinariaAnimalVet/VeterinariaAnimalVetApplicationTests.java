@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class VeterinariaAnimalVetApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void testPlantillaHtmlPresentes() {
+
 	}
 
 }
