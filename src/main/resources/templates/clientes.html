@@ -6,15 +6,7 @@
         <main>
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2>
-                    <b>Panel de Clientes</b> 
-                    <span class="badge bg-secondary fs-6" th:text="'Rol: ' + ${rolNombre != null ? rolNombre : ''}"></span>
-                </h2>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRegistro"
-                        th:if="${puedeCrear or #authorization.expression('hasRole(''PROPIETARIO'')')}">
-                    Nuevo Cliente
-                </button>
-            </div>
-
+                   
             <div class="alert alert-success alert-dismissible fade show" th:if="${mensajeExito}" role="alert">
                 <span th:text="${mensajeExito}"></span>
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -23,10 +15,7 @@
             <div class="mb-3" th:unless="${#lists.isEmpty(listaClientes)}">
                 <input type="text" id="busClientes" class="form-control" onkeyup="filtro()" placeholder="Buscar por DNI o Nombre...">
             </div>
-
-            <div class="col-12 text-center text-muted py-5" th:if="${#lists.isEmpty(listaClientes)}">
-                <p>No hay clientes registrados actualmente.</p>
-            </div>
+ 
 
             <div class="card shadow border-0" th:unless="${#lists.isEmpty(listaClientes)}">
                 <div class="card-header bg-dark text-white">
@@ -87,12 +76,7 @@
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="dni" class="form-label">DNI</label>
-                                    <input type="text" th:field="*{dni}" class="form-control" id="dni" placeholder="Ingresa DNI (8 dígitos)" required pattern="^[0-9]{8}$" maxlength="8" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                                    <div class="invalid-feedback">El DNI es obligatorio y debe tener 8 dígitos.</div>
-                                    <div class="text-danger small" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
-                                </div>
+                                
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre Completo</label>
                                     <input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Ingresa el nombre completo" required minlength="3" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,}$" oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '')">
