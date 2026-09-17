@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-    <div th:replace="~{layout/base :: plantilla('Citas Médicas - AnimalVet', ~{::main})}">
+    <div th:replace="~{layout/base :: plantilla('Control de citas - AnimalVet', ~{::main})}">
 
         <main>
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -181,11 +181,7 @@
                                            th:value="${citaEditar.cliente != null ? citaEditar.cliente.nombre : ''}"
                                            placeholder="Dueño" readonly>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="motivoEdit" class="form-label">Motivo</label>
-                                    <input type="text" th:field="*{motivo}" class="form-control" id="motivoEdit" required minlength="5" maxlength="100">
-                                    <div class="invalid-feedback">Obligatorio (mín 5 caracteres).</div>
-                                </div>
+                                
                                 <div class="mb-3">
                                     <label for="estadoEdit" class="form-label">Estado</label>
                                     <select th:field="*{estado}" class="form-select" id="estadoEdit" required>

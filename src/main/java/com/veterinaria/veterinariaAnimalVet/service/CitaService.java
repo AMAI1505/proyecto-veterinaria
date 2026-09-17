@@ -1,4 +1,4 @@
-git add .package com.veterinaria.veterinariaAnimalVet.service;
+package com.veterinaria.veterinariaAnimalVet.service;
 
 import com.veterinaria.veterinariaAnimalVet.model.Cita;
 import com.veterinaria.veterinariaAnimalVet.repository.CitaRepository;
