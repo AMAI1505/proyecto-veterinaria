@@ -14,6 +14,10 @@ public class CitaService {
     @Autowired
     private CitaRepository repo;
 
+    public CitaService(CitaRepository repo) {
+        this.repo = repo;
+    }
+
     // Listar todas las citas → SELECT * FROM citas
     public List<Cita> findAll() {
         return repo.findAll();
@@ -37,5 +41,13 @@ public class CitaService {
     // Verificar si existe
     public boolean existsById(Long id) {
         return repo.existsById(id);
+    }
+
+    public CitaRepository getRepo() {
+        return repo;
+    }
+
+    public void setRepo(CitaRepository repo) {
+        this.repo = repo;
     }
 }
