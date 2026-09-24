@@ -1,5 +1,19 @@
 package com.veterinaria.veterinariaAnimalVet.controller;
 
+import java.util.Optional;
+
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.veterinaria.veterinariaAnimalVet.model.Cita;
 import com.veterinaria.veterinariaAnimalVet.model.Cliente;
 import com.veterinaria.veterinariaAnimalVet.model.Mascota;
@@ -7,16 +21,8 @@ import com.veterinaria.veterinariaAnimalVet.model.Usuario;
 import com.veterinaria.veterinariaAnimalVet.service.CitaService;
 import com.veterinaria.veterinariaAnimalVet.service.ClienteService;
 import com.veterinaria.veterinariaAnimalVet.service.MascotaService;
-import jakarta.validation.Valid;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Optional;
+import jakarta.validation.Valid;
 
 @Controller
 public class VeterinariaController {
@@ -25,9 +31,7 @@ public class VeterinariaController {
     private final MascotaService mascotaService;
     private final CitaService citaService;
 
-    public VeterinariaController(ClienteService clienteService,
-                                 MascotaService mascotaService,
-                                 CitaService citaService) {
+    public VeterinariaController(ClienteService clienteService, MascotaService mascotaService,CitaService citaService) {
         this.clienteService = clienteService;
         this.mascotaService = mascotaService;
         this.citaService = citaService;
